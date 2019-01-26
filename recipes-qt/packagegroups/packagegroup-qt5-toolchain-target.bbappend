@@ -8,6 +8,7 @@ USE_WEBENGINE = " \
 #    ${USE_WEBENGINE} \
 #"
 
+# qtwebkit does not compile on arch
 RDEPENDS_${PN}_remove = " \
     qtwebkit-dev \
     qtwebkit-mkspecs \
