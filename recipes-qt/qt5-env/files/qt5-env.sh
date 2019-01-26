@@ -8,8 +8,8 @@ export QT_QPA_PLATFORM=eglfs
 # physical width and height units are mm
 
 # for the official Pi 7" touchscreen
-#export QT_QPA_EGLFS_PHYSICAL_WIDTH=155
-#export QT_QPA_EGLFS_PHYSICAL_HEIGHT=86
+export QT_QPA_EGLFS_PHYSICAL_WIDTH=155
+export QT_QPA_EGLFS_PHYSICAL_HEIGHT=86
 
 # for the pitft35r 480x320 touchscreen
 #export QT_QPA_EGLFS_WIDTH=480
