@@ -53,10 +53,17 @@ QML_APPS = " \
     qqtest-tools \
 "
 
+MQTT = " \
+    libmosquitto1 \
+    libmosquittopp1 \
+    mosquitto-dev \
+"
+
 IMAGE_INSTALL += " \
     ${QT5_DEV_PKGS} \
     ${QT5_PKGS} \
     ${QML_APPS} \
+    ${MQTT} \
 "
 
 export IMAGE_BASENAME = "qt5-image"
