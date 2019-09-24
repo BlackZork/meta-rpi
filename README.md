@@ -19,4 +19,9 @@ Latest commits
     meta-qt5 201fcf2
     meta-raspberrypi a48743d
 
-meta-rpi layer maintainer: Scott Ellis <scott@jumpnowtek.com>
+Forked from: 
+https://github.com/jumpnow/meta-rpi
+by Scott Ellis <scott@jumpnowtek.com>
+
+with minor changes for building rpi using bitbake instead of custom scripts
+ 
