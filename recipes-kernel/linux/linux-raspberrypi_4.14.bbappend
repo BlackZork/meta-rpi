@@ -1,4 +1,0 @@
-LINUX_VERSION = "4.14.93"
-
-SRCREV = "66b333b365acd6def12b07fc079f9d7d8e53ee50"
-

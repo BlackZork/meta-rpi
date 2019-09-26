@@ -8,6 +8,7 @@ inherit image
 DEPENDS += "bcm2835-bootfiles"
 
 CORE_OS = " \
+    ifupdown \
     kernel-modules \
     openssh openssh-keygen openssh-sftp-server \
     packagegroup-core-boot \
@@ -18,8 +19,15 @@ CORE_OS = " \
 WIFI_SUPPORT = " \
     crda \
     iw \
-    linux-firmware-raspbian \
+    linux-firmware-rpidistro-bcm43430 \
+    linux-firmware-rpidistro-bcm43455 \
     wpa-supplicant \
+"
+
+WIREGUARD_SUPPORT = " \
+    wireguard-init \
+    wireguard-module \
+    wireguard-tools \
 "
 
 DEV_SDK_INSTALL = " \
@@ -69,6 +77,7 @@ EXTRA_TOOLS_INSTALL = " \
     iproute2 \
     iptables \
     less \
+    lsof \
     nano \
     netcat-openbsd \
     nmap \
@@ -97,6 +106,7 @@ IMAGE_INSTALL += " \
     ${EXTRA_TOOLS_INSTALL} \
     ${RPI_STUFF} \
     ${WIFI_SUPPORT} \
+    ${WIREGUARD_SUPPORT} \
 "
 
 set_local_timezone() {

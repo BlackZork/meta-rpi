@@ -1,23 +1,23 @@
 This layer depends on:
 
     URI: git://git.yoctoproject.org/poky.git
-    branch: thud
+    branch: warrior
 
     URI: git://git.openembedded.org/meta-openembedded
-    branch: thud
+    branch: warrior
 
     URI: https://github.com/meta-qt5/meta-qt5
-    branch: thud
+    branch: warrior
 
     URI: git://git.yoctoproject.org/meta-raspberrypi
-    branch: thud
+    branch: warrior
 
 Latest commits
 
-    poky 7022689
-    meta-openembedded 6094ae1
-    meta-qt5 201fcf2
-    meta-raspberrypi a48743d
+    poky 6d2e12e
+    meta-openembedded 3bdbf72
+    meta-qt5 dc2dede
+    meta-raspberrypi 0750d5d
 
 Forked from: 
 https://github.com/jumpnow/meta-rpi

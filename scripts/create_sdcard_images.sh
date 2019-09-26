@@ -1,11 +1,27 @@
 #!/bin/bash
 
 if [ -z "${DSTDIR}" ]; then
-	DSTDIR=~/rpi/upload
+    DSTDIR=~/rpi/upload
+fi
+
+if [ ! -d ${DSTDIR} ]; then
+    mkdir ${DSTDIR}
+
+    if [ $? -ne 0 ]; then
+        echo "Failed to create $DSTDIR"
+        exit 1
+    fi
 fi
 
 if [ -z "${IMG}" ]; then
-	IMG=qt5
+    IMG=qt5
+fi
+
+if [ -z "${MACHINE}" ]; then
+    if [ -f ../../build/conf/local.conf ]; then
+        export MACHINE=$(grep '^MACHINE =' ../../build/conf/local.conf | cut -d'=' -f2 | tr -d '"' | tr -d ' ')
+        echo "Using MACHINE from local.conf: $MACHINE"
+    fi
 fi
 
 IMG_LONG="${IMG}-image-${MACHINE}"
@@ -16,26 +32,26 @@ if [ ! -d /media/card ]; then
 fi
 
 if [ "x${1}" = "x" ]; then
-	CARDSIZE=2
+    CARDSIZE=2
 else
-	if [ "${1}" -eq 2 ]; then
-		CARDSIZE=2
-	elif [ "${1}" -eq 4 ]; then
-		CARDSIZE=4
-	else
-		echo "Unsupported card size: ${1}"
-		exit 1
-	fi
+    if [ "${1}" -eq 2 ]; then
+        CARDSIZE=2
+    elif [ "${1}" -eq 4 ]; then
+        CARDSIZE=4
+    else
+        echo "Unsupported card size: ${1}"
+        exit 1
+    fi
 fi
 
 if [ -z "${OETMP}" ]; then
-	echo "OETMP environment variable not set"
-	exit 1
+    echo "OETMP environment variable not set"
+    exit 1
 fi
 
 if [ -z "${MACHINE}" ]; then
-	echo "MACHINE environment variable not set"
-	exit 1
+    echo "MACHINE environment variable not set"
+    exit 1
 fi
 
 HOSTNAME=${MACHINE}
@@ -43,8 +59,8 @@ HOSTNAME=${MACHINE}
 SRCDIR=${OETMP}/deploy/images/${MACHINE}
 
 if [ ! -f "${SRCDIR}/${IMG_LONG}.tar.xz" ]; then
-	echo "File not found: ${SRCDIR}/${IMG_LONG}.tar.xz"
-	exit 1
+    echo "File not found: ${SRCDIR}/${IMG_LONG}.tar.xz"
+    exit 1
 fi
 
 SDIMG=${IMG}-${MACHINE}-${CARDSIZE}gb.img
@@ -92,8 +108,8 @@ DEV=${LOOPDEV}p1
 ./copy_boot.sh ${DEV}
 
 if [ $? -ne 0 ]; then
-	sudo losetup -D
-	exit
+    sudo losetup -D
+    exit
 fi
 
 echo -e "\n***** Copying the rootfs *****"
@@ -101,8 +117,8 @@ DEV=${LOOPDEV}p2
 ./copy_rootfs.sh ${DEV} ${IMG} ${HOSTNAME}
 
 if [ $? -ne 0 ]; then
-	sudo losetup -D
-	exit
+    sudo losetup -D
+    exit
 fi
 
 echo -e "\n***** Detatching loop device *****"

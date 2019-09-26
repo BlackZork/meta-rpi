@@ -10,7 +10,8 @@ fi
 
 case "${MACHINE}" in
     raspberrypi|raspberrypi0|raspberrypi0-wifi|raspberrypi-cm)
-        DTBS="bcm2708-rpi-0-w.dtb \
+        DTBS="bcm2708-rpi-zero.dtb \
+              bcm2708-rpi-zero-w.dtb \
               bcm2708-rpi-b.dtb \
               bcm2708-rpi-b-plus.dtb \
               bcm2708-rpi-cm.dtb"
@@ -20,6 +21,9 @@ case "${MACHINE}" in
               bcm2710-rpi-3-b.dtb \
               bcm2710-rpi-3-b-plus.dtb \
               bcm2710-rpi-cm3.dtb"
+        ;;
+    raspberrypi4)
+        DTBS="bcm2711-rpi-4-b.dtb"
         ;;
     *)
         echo "Invalid MACHINE: ${MACHINE}"
