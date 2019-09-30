@@ -2,3 +2,5 @@
 RDEPENDS_${PN} += " \
     nativesdk-qtdeclarative-tools \
 "
+
+RDEPENDS_${PN}_remove = "nativesdk-qttools-tools"
